@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jmavis/git-github.com-jmavis-TODOs/issues"
   },
-  "homepage": "https://github.com/jmavis/git-github.com-jmavis-TODOs"
+  "homepage": "https://github.com/jmavis/git-github.com-jmavis-TODOs",
+  "devDependencies": {
+    "cordova": "^4.1.2",
+    "karma": "^0.12.25"
+  }
 }
