@@ -27,17 +27,15 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
-        <script type="text/javascript" src="js/libs/angular.js"></script>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+        <div class="app" ng-controller="TodosController as todos">
+            <span>{{todos.todo}}</span>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+        <script type="text/javascript" src="libs/angular.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>
