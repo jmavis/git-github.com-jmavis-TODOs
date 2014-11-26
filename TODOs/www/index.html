@@ -31,7 +31,11 @@
     <body>
         <div class="app" ng-controller="TodosController as todosController">
             <div ng-repeat="todo in todosController.todos">
-                <span>{{todo}}</span>
+                <div ng-controller="TodoController as todoController" ng-click="todoController.toggleEdit();todo.editing = !todo.editing">
+                    <span ng-hide="todo.editing">{{todo.name}}</span>
+                    <textarea ng-show="todo.editing"></textarea>
+                    <span ng-show="todo.dueDate">{{todo.dueDate | date:'medium'}}</span>
+                </div>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
