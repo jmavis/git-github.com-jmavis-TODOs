@@ -29,8 +29,10 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     </head>
     <body>
-        <div class="app" ng-controller="TodosController as todos">
-            <span>{{todos.todo}}</span>
+        <div class="app" ng-controller="TodosController as todosController">
+            <div ng-repeat="todo in todosController.todos">
+                <span>{{todo}}</span>
+            </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
