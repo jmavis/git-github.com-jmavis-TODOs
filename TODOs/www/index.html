@@ -34,13 +34,13 @@
                 <div ng-controller="TodoController as todoController" ng-click="todoController.toggleEdit();todo.editing = !todo.editing">
                     <span ng-hide="todo.editing">{{todo.name}}</span>
                     <textarea ng-show="todo.editing"></textarea>
-                    <span ng-show="todo.dueDate">{{todo.dueDate.getTime() | date:'medium'}}</span>
+                    <span ng-show="todo.dueDate">{{todo.dueDate | date:'medium'}}</span>
                 </div>
             </div>
             <div ng-controller="AddTodoController as addCtrl">
                 <span>{{addCtrl.todo.name}}</span>
-                <span ng-show="addCtrl.todo.dueDate">{{addCtrl.todo.dueDate.getTime() | date:'medium'}}</span>
-                <form ng-submit="addCtrl.addTodo(todosController.todos)">
+                <span ng-show="addCtrl.todo.dueDate">{{addCtrl.todo.dueDate | date:'medium'}}</span>
+                <form ng-submit="addCtrl.addTodo(todosController)">
                     <input type="text" ng-model="addCtrl.todo.name"></input>
                     <input type="date" ng-model="addCtrl.todo.dueDate"></input>
                     <input type="submit"></input> 
@@ -48,6 +48,9 @@
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+
+        <script type="text/javascript" src="js/constants/storageConstants.js"></script>
+        
         <script type="text/javascript" src="js/main.js"></script>
 
         <script type="text/javascript" src="libs/angular.js"></script>
