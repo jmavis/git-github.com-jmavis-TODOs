@@ -15,7 +15,7 @@
 			var storedTodos;
 
 			try {
-				storedTodos = JSON.parse(window.localStorage.getItem(window.storageConstants.TODOS_KEY));
+				storedTodos = angular.fromJson(window.localStorage.getItem(window.storageConstants.TODOS_KEY));
 			} catch (e) {
 				console.log("could not parse todos because " + e);
 			}
@@ -25,16 +25,14 @@
 		}
 
 		function storeTodos(todosToStore) {
-			window.localStorage.setItem(window.storageConstants.TODOS_KEY, JSON.stringify(todosToStore));
+			window.localStorage.setItem(window.storageConstants.TODOS_KEY, angular.toJson(todosToStore));
 		}
 
 		this.todos = loadTodos();
 
-		window.todos = this.todos;
-
 		this.addTodo = function(todo){
 			this.todos.push(todo);
-			// storeTodos(this.todos);
+			storeTodos(this.todos);
 		}
 	});
 
