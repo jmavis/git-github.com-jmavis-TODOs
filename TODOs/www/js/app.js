@@ -1,8 +1,15 @@
 (function(){
 	var app = angular.module("todos", []);
 
+	function getNewId() {
+		var storedId = parseInt(window.localStorage.getItem(window.storageConstants.IDS_KEY)) || 0;
+		window.localStorage.setItem(window.storageConstants.IDS_KEY, storedId+1);
+		return storedId;
+	}
+
 	function todo(name, dueDate) {
 		return {
+			id: getNewId(),
 			name: name,
 			dueDate: dueDate,
 			editing: false,
