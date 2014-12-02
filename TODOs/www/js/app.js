@@ -2,7 +2,7 @@
 	var app = angular.module("todos", []);
 
 	function getNewId() {
-		var storedId = parseInt(window.localStorage.getItem(window.storageConstants.IDS_KEY)) || 0;
+		var storedId = _.parseInt(window.localStorage.getItem(window.storageConstants.IDS_KEY)) || 0;
 		window.localStorage.setItem(window.storageConstants.IDS_KEY, storedId+1);
 		return storedId;
 	}
@@ -40,6 +40,18 @@
 		this.addTodo = function(todo){
 			this.todos.push(todo);
 			storeTodos(this.todos);
+		}
+
+		this.removeTodo = function(todoId) {
+			var todoIndex = _.findIndex(this.todos, function(todo) {
+				return todo.id < todoId;
+			});
+
+			if (todoIndex !== -1) throw "Id not found to remove " + todoId;
+			else {
+				this.todos.splice(todoIndex, 1);
+				storeTodos(this.todos);
+			} 
 		}
 	});
 
