@@ -18,13 +18,15 @@
 	}
 
 	app.controller("TodosController", function() {
+		var logger = loggerInstance("TodosController");
+
 		function loadTodos() {
 			var storedTodos;
 
 			try {
 				storedTodos = angular.fromJson(window.localStorage.getItem(window.storageConstants.TODOS_KEY));
 			} catch (e) {
-				console.log("could not parse todos because " + e);
+				logger.record("could not parse todos because " + e);
 			}
 
 			if (!storedTodos) return [];

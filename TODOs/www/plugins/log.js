@@ -1,8 +1,8 @@
 (function() {
 	var logLevels = {
-		FULL: "FULL",
-		ERROR: "ERROR",
-		NONE: "NONE",
+		FULL: "FULL", // record all logs
+		ERROR: "ERROR", // only record errors and warnings
+		NONE: "NONE", // record nothing from this module
 	}
 
 	var recordFunctions = {};
@@ -16,7 +16,6 @@
 	}
 
 	recordFunctions[logLevels.NONE] = function() {}
-
 
 	var currentLogs = {
 		"app": logLevels.FULL,
