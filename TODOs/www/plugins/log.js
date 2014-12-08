@@ -7,12 +7,12 @@
 
 	var recordFunctions = {};
 
-	recordFunctions[logLevels.FULL] = function(log) {
-		console.log(log);
+	recordFunctions[logLevels.FULL] = function(name, log) {
+		console.log(name + ": " + log);
 	}
 
-	recordFunctions[logLevels.ERROR] = function(log) {
-		console.log(log);
+	recordFunctions[logLevels.ERROR] = function(name, log) {
+		console.log(name + ": " + log);
 	}
 
 	recordFunctions[logLevels.NONE] = function() {}
@@ -26,7 +26,9 @@
 		var recordFunction = recordFunctions[currentLogs[name]] || function(){};
 
 		return {
-			record: recordFunction,
+			record: function(message){
+				recordFunction(name, message);
+			},
 		};
 	}
 })()
