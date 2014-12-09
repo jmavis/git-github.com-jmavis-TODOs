@@ -5,13 +5,19 @@
 		NONE: "NONE", // record nothing from this module
 	}
 
+	logTypes = {
+		DEBUG: "DEBUG",
+		WARNING: "WARNING",
+		ERROR: "ERROR",
+	}
+
 	var recordFunctions = {};
 
-	recordFunctions[logLevels.FULL] = function(name, log) {
+	recordFunctions[logLevels.FULL] = function(name, log, type) {
 		console.log(name + ": " + log);
 	}
 
-	recordFunctions[logLevels.ERROR] = function(name, log) {
+	recordFunctions[logLevels.ERROR] = function(name, logtype) {
 		console.log(name + ": " + log);
 	}
 
