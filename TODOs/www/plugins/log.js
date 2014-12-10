@@ -6,9 +6,9 @@
 	}
 
 	logTypes = {
-		DEBUG: "DEBUG",
-		WARNING: "WARNING",
-		ERROR: "ERROR",
+		DEBUG: 3,
+		WARNING: 2,
+		ERROR: 1,
 	}
 
 	var recordFunctions = {};
@@ -17,8 +17,10 @@
 		console.log(name + ": " + log);
 	}
 
-	recordFunctions[logLevels.ERROR] = function(name, logtype) {
-		console.log(name + ": " + log);
+	recordFunctions[logLevels.ERROR] = function(name, log, type) {
+		if (log < logtTypes.WARNING) {
+			console.log(name + ": " + log);
+		}
 	}
 
 	recordFunctions[logLevels.NONE] = function() {}
