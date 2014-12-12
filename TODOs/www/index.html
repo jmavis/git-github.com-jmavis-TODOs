@@ -24,13 +24,16 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
     </head>
     <body>
         <div class="app" ng-controller="TodosController as todosController">
             <div ng-repeat="todo in todosController.todos">
                 <div ng-controller="TodoController as todoController" ng-click="todoController.toggleEdit();todo.editing = !todo.editing">
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                    </button>
                     <span ng-hide="todo.editing">{{todo.name}}</span>
                     <textarea ng-show="todo.editing"></textarea>
                     <span ng-show="todo.dueDate">{{todo.dueDate | date:'medium'}}</span>
