@@ -32,9 +32,9 @@
             <div ng-repeat="todo in todosController.todos">
                 <div ng-controller="TodoController as todoController" ng-click="todoController.toggleEdit();todo.editing = !todo.editing">
                     <button type="button" class="btn btn-default" aria-label="Left Align">
-                      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                      <span class="glyphicon glyphicon-align-center" aria-hidden="true"></span>
                     </button>
-                    <span ng-hide="todo.editing">{{todo.name}}</span>
+                    <span ng-hide="todo.editing" class="td-todo-label">{{todo.name}}</span>
                     <textarea ng-show="todo.editing"></textarea>
                     <span ng-show="todo.dueDate">{{todo.dueDate | date:'medium'}}</span>
                     <button ng-click="todosController.removeTodo(todo.id)" type="button" class="btn btn-default btn-lg">
@@ -48,7 +48,9 @@
                 <form ng-submit="addCtrl.addTodo(todosController)">
                     <input type="text" ng-model="addCtrl.todo.name"></input>
                     <input type="date" ng-model="addCtrl.todo.dueDate"></input>
-                    <input type="submit"></input> 
+                    <button ng-click="todosController.removeTodo(todo.id)" type="submit" class="btn btn-default btn-lg">
+                        Add
+                    </button>
                 </form>
             </div>
         </div>
