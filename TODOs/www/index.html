@@ -30,7 +30,7 @@
     <body>
         <div class="app" ng-controller="TodosController as todosController">
             <div ng-repeat="todo in todosController.todos">
-                <div ng-controller="TodoController as todoController">
+                <div ng-controller="TodoController as todoController" class="td-todo-element">
                     <div ng-hide="todo.editing">
                         <button type="button" class="btn btn-default" aria-label="Left Align">
                           <span class="glyphicon glyphicon-align-center" aria-hidden="true"></span>

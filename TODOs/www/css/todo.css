@@ -1,3 +1,7 @@
 .td-todo-label {
 	font-size: 1.5em;
 }
+
+.td-todo-element {
+	border-bottom: #D7D7D7 1px solid;
+}
