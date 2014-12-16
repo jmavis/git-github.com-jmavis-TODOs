@@ -39,9 +39,11 @@
 
 		this.todos = loadTodos();
 
+		window.todos = this.todos;
+
 		this.addTodo = function(todo){
 			this.todos.push(todo);
-			storeTodos(this.todos);
+			this.save();
 		}
 
 		this.removeTodo = function(todoId) {
@@ -52,8 +54,12 @@
 			if (todoIndex !== -1) throw "Id not found to remove " + todoId;
 			else {
 				this.todos.splice(todoIndex, 1);
-				storeTodos(this.todos);
+				this.save();
 			} 
+		}
+
+		this.save = function() {
+			storeTodos(this.todos);
 		}
 	});
 
