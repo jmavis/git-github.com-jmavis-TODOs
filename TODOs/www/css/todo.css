@@ -5,3 +5,7 @@
 .td-todo-element {
 	border-bottom: #D7D7D7 1px solid;
 }
+
+.td-categories-sidebar {
+	width: 50px;
+}

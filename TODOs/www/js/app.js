@@ -39,14 +39,14 @@
 
 		this.todos = loadTodos();
 
-		window.todos = this.todos;
-
 		this.addTodo = function(todo){
 			this.todos.push(todo);
+			
 			this.save();
 		}
 
 		this.removeTodo = function(todoId) {
+			logger.record("removing");
 			var todoIndex = _.findIndex(this.todos, function(todo) {
 				return todo.id < todoId;
 			});
