@@ -65,7 +65,7 @@
                             <form ng-submit="todosController.save();todo.editing=false;">
                                 <input type="text" ng-model="todo.name"></input>
                                 <input type="date" ng-show="todo.dueDate" ng-model="addCtrl.todo.dueDate"></input>
-                                <button ng-click="todosController.removeTodo(todo.id)" type="button" class="btn btn-default btn-lg">
+                                <button ng-click="todosController.removeTodo(todo.id);todo.editing=false;" type="button" class="btn btn-default btn-lg">
                                     Remove
                                 </button>
                                 <button ng-click="todosController.save();todo.editing=false;" type="button" class="btn btn-default btn-lg">

@@ -13,6 +13,7 @@
 			name: name,
 			dueDate: dueDate,
 			editing: false,
+			createdDate: new Date(),
 			version: 1, // for comparision in future versions in case data changes
 		}
 	}
@@ -38,24 +39,19 @@
 		}
 
 		this.todos = loadTodos();
+		window.todos = this.todos;
 
 		this.addTodo = function(todo){
+			logger.record("adding " + todo.id);
 			this.todos.push(todo);
 			
 			this.save();
 		}
 
 		this.removeTodo = function(todoId) {
-			logger.record("removing");
-			var todoIndex = _.findIndex(this.todos, function(todo) {
-				return todo.id < todoId;
-			});
-
-			if (todoIndex !== -1) throw "Id not found to remove " + todoId;
-			else {
-				this.todos.splice(todoIndex, 1);
-				this.save();
-			} 
+			logger.record("removing " + todoId);
+			this.todos = _.reject(this.todos, {id:todoId});
+			this.save();
 		}
 
 		this.save = function() {
