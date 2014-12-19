@@ -34,6 +34,12 @@
 		var recordFunction = recordFunctions[currentLogs[name]] || function(){};
 
 		return {
+			d: function(message) {
+
+			},
+			w: function(message) {
+
+			},
 			record: function(message){
 				recordFunction(name, message);
 			},
