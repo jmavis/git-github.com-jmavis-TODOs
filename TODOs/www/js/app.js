@@ -27,7 +27,7 @@
 			try {
 				storedTodos = angular.fromJson(window.localStorage.getItem(window.storageConstants.TODOS_KEY));
 			} catch (e) {
-				logger.record("could not parse todos because " + e);
+				logger.e("could not parse todos because " + e);
 			}
 
 			if (!storedTodos) return [];
@@ -42,14 +42,14 @@
 		window.todos = this.todos;
 
 		this.addTodo = function(todo){
-			logger.record("adding " + todo.id);
+			logger.d("adding " + todo.id);
 			this.todos.push(todo);
 			
 			this.save();
 		}
 
 		this.removeTodo = function(todoId) {
-			logger.record("removing " + todoId);
+			logger.d("removing " + todoId);
 			this.todos = _.reject(this.todos, {id:todoId});
 			this.save();
 		}
