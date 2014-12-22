@@ -1,5 +1,6 @@
 .td-todo-label {
 	font-size: 1.5em;
+	max-width: 200px;
 }
 
 .td-todo-element {

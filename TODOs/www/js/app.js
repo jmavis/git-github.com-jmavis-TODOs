@@ -7,6 +7,12 @@
 		return storedId;
 	}
 
+	function category(name) {
+		return {
+			id: getNewId(),
+		};
+	}
+
 	function todo(name, dueDate) {
 		return {
 			id: getNewId(),
@@ -69,8 +75,12 @@
 		this.todo = new todo("", new Date());
 
 		this.addTodo = function(todosController) {
-			todosController.addTodo(this.todo);
-			this.todo = new todo("", new Date());
+			if (this.todo.name.length === 0) {
+				alert("Enter some text");
+			} else {
+				todosController.addTodo(this.todo);
+				this.todo = new todo("", new Date());
+			}
 		}
 	});
 })();
