@@ -28,14 +28,9 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
     </head>
     <body>
-        <div class="app">
-            <ul class="nav nav-pills nav-stacked td-categories-sidebar ui-inline-block">
-                <li>Hai</li>
-                <li>Hai</li>
-                <li>Hai</li>
-                <li>Hai</li>
-                <li>Hai</li>
-                <li>Hai</li>
+        <div class="app" ng-controller="AppController as appController">
+            <ul class="nav nav-pills nav-stacked td-categories-sidebar ui-inline-block" ng-repeat="category in appController.categories">
+                <li>{{category}}</li>
             </ul>
             <div class="td-category ui-inline-block" ng-controller="TodosController as todosController">
                 <div ng-controller="AddTodoController as addCtrl">
@@ -52,9 +47,6 @@
                 <div ng-repeat="todo in todosController.todos">
                     <div ng-controller="TodoController as todoController" class="td-todo-element">
                         <div ng-hide="todo.editing">
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                              <span class="glyphicon glyphicon-align-center" aria-hidden="true"></span>
-                            </button>
                             <span class="td-todo-label">{{todo.name}}</span>
                             <span ng-show="todo.dueDate">{{todo.dueDate | date:'medium'}}</span>
                             <button ng-click="todo.editing=true" type="button" class="btn btn-default btn-lg">
