@@ -34,8 +34,13 @@
 		}
 	}
 
-	app.controller("AppController", function() {
-		this.categories = ["Cat 1", "Cat 2", "Cat 3"];
+	app.controller("CategoryController", function() {
+		var logger = loggerInstance("CategoryController");
+
+
+		this.categories = [new category("hai")];
+
+
 	});
 
 

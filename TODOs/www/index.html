@@ -28,9 +28,9 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
     </head>
     <body>
-        <div class="app" ng-controller="AppController as appController">
-            <ul class="nav nav-pills nav-stacked td-categories-sidebar ui-inline-block" ng-repeat="category in appController.categories">
-                <li>{{category}}</li>
+        <div class="app" ng-controller="CategoryController as categoryController">
+            <ul class="nav nav-pills nav-stacked td-categories-sidebar ui-inline-block" ng-repeat="category in categoryController.categories">
+                <li>{{category.name}}</li>
             </ul>
             <div class="td-category ui-inline-block" ng-controller="TodosController as todosController">
                 <div ng-controller="AddTodoController as addCtrl">
