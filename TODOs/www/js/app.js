@@ -24,6 +24,16 @@
 		}
 	}
 
+	function category(name) {
+		return {
+			id: getNewId(), // TODO use a different id set than todos
+			name: name,
+			todos: [],
+			createdDate: new Date(),
+			version: 1,
+		}
+	}
+
 	app.controller("AppController", function() {
 		this.categories = ["Cat 1", "Cat 2", "Cat 3"];
 	});
