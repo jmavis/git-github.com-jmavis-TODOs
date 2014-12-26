@@ -37,8 +37,29 @@
 	app.controller("CategoryController", function() {
 		var logger = loggerInstance("CategoryController");
 
+		function loadcategories() {
+			var storedcategories;
 
-		this.categories = [new category("hai")];
+			try {
+				storedcategories = angular.fromJson(window.localStorage.getItem(window.storageConstants.CATEGORIES_KEY));
+			} catch (e) {
+				logger.e("could not parse categories because " + e);
+			}
+
+			if (!storedcategories) return [];
+			else return storedcategories;
+		}
+
+		function saveCategories(categoriesToStore) {
+			window.localStorage.setItem(window.storageConstants.CATEGORIES_KEY, angular.toJson(categoriesToStore));
+		}
+
+		this.categories = loadcategories;
+
+		if (this.categories.length === 0) {
+			this.categories.push(new category("cat 1"));
+			saveCategories(this.categories);
+		}
 
 
 	});
