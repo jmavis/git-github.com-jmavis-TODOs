@@ -30,7 +30,7 @@
     <body>
         <div class="app" ng-controller="CategoryController as categoryController">
             <ul class="nav nav-pills nav-stacked td-categories-sidebar ui-inline-block" ng-repeat="category in categoryController.categories">
-                <li>{{category.name}}</li>
+                <li ng-click="categoryController.currentCategory=category">{{category.name}}</li>
             </ul>
             <div class="td-category ui-inline-block" ng-controller="TodosController as todosController">
                 <div ng-controller="AddTodoController as addCtrl">
