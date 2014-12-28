@@ -54,14 +54,13 @@
 			window.localStorage.setItem(window.storageConstants.CATEGORIES_KEY, angular.toJson(categoriesToStore));
 		}
 
-		this.categories = loadcategories;
+		this.categories = loadcategories();
+		this.currentCategory = this.categories[0];
 
 		if (this.categories.length === 0) {
 			this.categories.push(new category("cat 1"));
 			saveCategories(this.categories);
 		}
-
-
 	});
 
 
