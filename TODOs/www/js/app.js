@@ -61,6 +61,23 @@
 			this.categories.push(new category("cat 1"));
 			saveCategories(this.categories);
 		}
+
+		this.save = function() {
+			saveCategories(this.categories);
+		}
+
+		this.addTodo = function(todo){
+			logger.d("adding " + todo.id);
+			this.currentCategory.todos.push(todo);
+			
+			this.save();
+		}
+
+		this.removeTodo = function(todoId) {
+			logger.d("removing " + todoId);
+			this.currentCategory.todos = _.reject(this.categories.todos, {id:todoId});
+			this.save();
+		}
 	});
 
 
@@ -85,7 +102,6 @@
 		}
 
 		this.todos = loadTodos();
-		window.todos = this.todos;
 
 		this.addTodo = function(todo){
 			logger.d("adding " + todo.id);
