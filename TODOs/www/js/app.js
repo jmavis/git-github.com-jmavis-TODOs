@@ -120,13 +120,7 @@
 			storeTodos(this.todos);
 		}
 	});
-
-	app.controller("TodoController", function() {
-		this.toggleEdit = function() {
-			// this.find("textarea").focus();
-		}
-	});
-
+	
 	app.controller("AddTodoController", function() {
 		this.todo = new todo("", new Date());
 
