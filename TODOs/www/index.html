@@ -30,22 +30,20 @@
     <body>
         <div class="app" ng-controller="CategoryController as categoryController">
             <ul class="nav nav-pills nav-stacked td-categories-sidebar ui-inline-block" ng-repeat="category in categoryController.categories">
-                <li ng-click="categoryController.currentCategory=category">{{category.name}}</li>
+                <li ng-click="categoryController.changeCurrent(category)">{{category.name}}</li>
             </ul>
-            <div class="td-category ui-inline-block" ng-controller="TodosController as todosController">
+            <div class="td-category ui-inline-block">
                 <div ng-controller="AddTodoController as addCtrl">
                     <span>{{addCtrl.todo.name}}</span>
                     <span ng-show="addCtrl.todo.dueDate">{{addCtrl.todo.dueDate | date:'medium'}}</span>
-                    <form ng-submit="addCtrl.addTodo(todosController)">
+                    <form ng-submit="addCtrl.addTodo(categoryController)">
                         <input type="text" ng-model="addCtrl.todo.name"></input>
                         <input type="date" ng-model="addCtrl.todo.dueDate"></input>
-                        <button type="submit" class="btn btn-default btn-lg">
-                            Add
-                        </button>
+                        <button type="submit" class="btn btn-default btn-lg">Add</button>
                     </form>
                 </div>
-                <div ng-repeat="todo in todosController.todos">
-                    <div ng-controller="TodoController as todoController" class="td-todo-element">
+                <div ng-repeat="todo in categoryController.currentCategory.todos">
+                    <div class="td-todo-element">
                         <div ng-hide="todo.editing">
                             <span class="td-todo-label">{{todo.name}}</span>
                             <span ng-show="todo.dueDate">{{todo.dueDate | date:'medium'}}</span>
@@ -54,15 +52,11 @@
                             </button>
                         </div>
                         <div ng-show="todo.editing">
-                            <form ng-submit="todosController.save();todo.editing=false;">
+                            <form ng-submit="todo.editing=false;categoryController.save();">
                                 <input type="text" ng-model="todo.name"></input>
                                 <input type="date" ng-show="todo.dueDate" ng-model="addCtrl.todo.dueDate"></input>
-                                <button ng-click="todosController.removeTodo(todo.id);todo.editing=false;" type="button" class="btn btn-default btn-lg">
-                                    Remove
-                                </button>
-                                <button ng-click="todosController.save();todo.editing=false;" type="button" class="btn btn-default btn-lg">
-                                    Save
-                                </button>
+                                <button ng-click="categoryController.removeTodo(todo.id);todo.editing=false;" type="button" class="btn btn-default btn-lg">Remove</button>
+                                <button type="submit" class="btn btn-default btn-lg">Save</button>
                             </form>
                         </div>
                     </div>

@@ -78,57 +78,21 @@
 			this.currentCategory.todos = _.reject(this.categories.todos, {id:todoId});
 			this.save();
 		}
+
+		this.changeCurrent = function(newCategory) {
+			logger.d("Changing current to " + newCategory.id)
+			this.currentCategory = newCategory;
+		} 
 	});
 
-
-	app.controller("TodosController", function() {
-		var logger = loggerInstance("TodosController");
-
-		function loadTodos() {
-			var storedTodos;
-
-			try {
-				storedTodos = angular.fromJson(window.localStorage.getItem(window.storageConstants.TODOS_KEY));
-			} catch (e) {
-				logger.e("could not parse todos because " + e);
-			}
-
-			if (!storedTodos) return [];
-			else return storedTodos;
-		}
-
-		function storeTodos(todosToStore) {
-			window.localStorage.setItem(window.storageConstants.TODOS_KEY, angular.toJson(todosToStore));
-		}
-
-		this.todos = loadTodos();
-
-		this.addTodo = function(todo){
-			logger.d("adding " + todo.id);
-			this.todos.push(todo);
-			
-			this.save();
-		}
-
-		this.removeTodo = function(todoId) {
-			logger.d("removing " + todoId);
-			this.todos = _.reject(this.todos, {id:todoId});
-			this.save();
-		}
-
-		this.save = function() {
-			storeTodos(this.todos);
-		}
-	});
-	
 	app.controller("AddTodoController", function() {
 		this.todo = new todo("", new Date());
 
-		this.addTodo = function(todosController) {
+		this.addTodo = function(categoryController) {
 			if (this.todo.name.length === 0) {
 				alert("Enter some text");
 			} else {
-				todosController.addTodo(this.todo);
+				categoryController.addTodo(this.todo);
 				this.todo = new todo("", new Date());
 			}
 		}
