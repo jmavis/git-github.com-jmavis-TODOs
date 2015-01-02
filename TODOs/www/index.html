@@ -29,9 +29,13 @@
     </head>
     <body>
         <div class="app" ng-controller="CategoryController as categoryController">
-            <ul class="nav nav-pills nav-stacked td-categories-sidebar ui-inline-block" ng-repeat="category in categoryController.categories">
-                <li ng-click="categoryController.changeCurrent(category)">{{category.name}}</li>
-            </ul>
+            <div class="td-categories-sidebar">
+                <ul class="nav nav-pills nav-stacked ui-inline-block" ng-repeat="category in categoryController.categories">
+                    <li ng-click="categoryController.changeCurrent(category)">{{category.name}}</li>
+                </ul>
+                <li ng-click="categoryController.addCategory()">+ Category</li>
+            </div>      
+                
             <div class="td-category ui-inline-block">
                 <div ng-controller="AddTodoController as addCtrl">
                     <span>{{addCtrl.todo.name}}</span>

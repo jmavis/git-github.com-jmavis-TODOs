@@ -46,6 +46,11 @@
 				logger.e("could not parse categories because " + e);
 			}
 
+			if (!storedcategories || storedcategories.length === 0) { // for debugging
+				storedcategories.push(new category("cat 1"));
+				storedcategories.push(new category("cat 2"));
+			}
+
 			if (!storedcategories) return [];
 			else return storedcategories;
 		}
@@ -56,11 +61,6 @@
 
 		this.categories = loadcategories();
 		this.currentCategory = this.categories[0];
-
-		if (this.categories.length === 0) {
-			this.categories.push(new category("cat 1"));
-			saveCategories(this.categories);
-		}
 
 		this.save = function() {
 			saveCategories(this.categories);
@@ -80,8 +80,12 @@
 		}
 
 		this.changeCurrent = function(newCategory) {
-			logger.d("Changing current to " + newCategory.id)
-			this.currentCategory = newCategory;
+			if (newCategory.id === this.currentCategory.id) {
+				logger.d("Already on " + newCategory.id)
+			} else {
+				logger.d("Changing current to " + newCategory.id)
+				this.currentCategory = newCategory;
+			}
 		} 
 	});
 
