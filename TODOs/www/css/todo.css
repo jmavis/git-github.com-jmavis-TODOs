@@ -9,4 +9,6 @@
 
 .td-categories-sidebar {
 	width: 100px;
+	background: #d4d4d4;
+	border-right: solid #b4b4b4 1px;
 }
