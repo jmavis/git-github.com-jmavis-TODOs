@@ -30,8 +30,9 @@
     <body>
         <div class="app" ng-controller="CategoryController as categoryController">
             <div class="td-categories-sidebar">
-                <ul class="nav nav-pills nav-stacked ui-inline-block" ng-repeat="category in categoryController.categories">
-                    <li ng-click="categoryController.changeCurrent(category)">{{category.name}}</li>
+                <ul class="nav nav-pills nav-stacked" ng-repeat="category in categoryController.categories">
+                    <li ng-show="!category.editing" ng-click="categoryController.changeCurrent(category)">{{category.name}}</li>
+                    <li ng-show="category.editing">Hai</li>
                 </ul>
                 <li ng-click="categoryController.addCategory()">+ Category</li>
             </div>      
