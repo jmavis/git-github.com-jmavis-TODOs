@@ -29,6 +29,7 @@
 			id: getNewId(), // TODO use a different id set than todos
 			name: name,
 			todos: [],
+			selected: false,
 			createdDate: new Date(),
 			version: 1,
 		}
@@ -60,7 +61,8 @@
 		}
 
 		this.categories = loadcategories();
-		this.currentCategory = this.categories[0];
+		window.cats = this.categories;
+		this.currentCategory = _.find(this.categories, {selected: true}) || this.categories[0];
 
 		this.save = function() {
 			saveCategories(this.categories);
@@ -85,6 +87,8 @@
 			} else {
 				logger.d("Changing current to " + newCategory.id)
 				this.currentCategory = newCategory;
+				this.currentCategory.selected = true;
+				this.save();
 			}
 		} 
 	});

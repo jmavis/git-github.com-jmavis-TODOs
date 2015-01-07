@@ -29,10 +29,22 @@
     </head>
     <body>
         <div class="app" ng-controller="CategoryController as categoryController">
-            <div class="td-categories-sidebar">
-                <ul class="nav nav-pills nav-stacked" ng-repeat="category in categoryController.categories">
+            <div class="td-categories-sidebar"><!-- 
+            <ul class="nav nav-pills">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul> -->
+                <ul class="nav nav-pills">
+                    <div ng-repeat="category in categoryController.categories" >
+                        <li ng-click="categoryController.changeCurrent(category)">
+                        {{category.name}}
+                        </li>
+                    </div>
+                    
+                 <li role="presentation"><a href="#">Profile</a></li><!-- 
                     <li ng-show="!category.editing" ng-click="categoryController.changeCurrent(category)">{{category.name}}</li>
-                    <li ng-show="category.editing">Hai</li>
+                    <li ng-show="category.editing">Hai</li> -->
                 </ul>
                 <li ng-click="categoryController.addCategory()">+ Category</li>
             </div>      
